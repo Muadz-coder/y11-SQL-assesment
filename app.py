@@ -10,7 +10,7 @@ cursor.execute(sql, (book_title,))
 result = cursor.fetchall()
 
 if result:
-    print(result)
+    print(f'Book Details: {result}')
 else:
     print("Not found")
 
