@@ -10,7 +10,8 @@ cursor.execute(sql, (book_title,))
 result = cursor.fetchall()
 
 if result:
-    print(result)
+    for book in result:
+        print(f'Book: {book[1]}\nDate: {book[3]}')
 else:
     print("Not found")
 
