@@ -9,10 +9,11 @@ sql = "SELECT * FROM book WHERE book_name = ?;"
 cursor.execute(sql, (book_title,))
 result = cursor.fetchall()
 
+
 if result:
-    for book in result:
-        print(f'Book: {book[1]}\nDate: {book[3]}')
+    for booj in result:
+        print(book[1])
 else:
-    print("Not found")
+    print('not found')
 
 db.close()
