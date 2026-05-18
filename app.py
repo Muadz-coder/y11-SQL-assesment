@@ -4,11 +4,8 @@ DATABASE = 'book.db'
 db = sqlite3.connect(DATABASE)
 cursor = db.cursor()
 
-stuff = input('What would you like to do?\nOption: Insert Book Details / Check Book Details\nUser: ').lower()
-
-
-if 'check' in stuff:
-        book_title = input("What book are you looking for?\nUser: ").title()
+def check_book_details():
+        book_title = input("Book Title: ").title()
         sql = "SELECT * FROM book WHERE book_name = ?;"
         cursor.execute(sql, (book_title,))
         result = cursor.fetchall()
@@ -28,21 +25,27 @@ if 'check' in stuff:
                       
         else:
             print('book not found')
+        
+        db.close()
 
-if 'insert' in stuff:
-     inst_book = input('Book title: ')
-     sql = "SELECT * FROM genre;"
-     cursor.execute(sql,)
+def print_book_genre():
+     genre = input('Genre name: ')
+     sql = "SELECT * FROM genre WHERE genre_name = ?;"
+     cursor.execute(sql, (genre,))
      result = cursor.fetchall()
-     genres = [all_genre[1] for all_genre in result]
-     print("Available genres:", ", ".join(genres))
-     while True:
-        inst_genre = input('Genre: ').title()
-        if inst_genre in genres:
-             print('try works')
-             break
-        else:
-             print('IT DOES NOT WORK')
+     if result:
+        for genre_book in result:
+            genre_id = genre_book[0]
+            sql = "SELECT * FROM book WHERE genre_id = ?;"
+            cursor.execute(sql, (genre_id,))
+            result = cursor.fetchall()
+            print(f"book_name                              genre_name        book_id  year_released  author_id")
+            for book in result:
+                print(f"{book[1]:<39}{genre_book[1]:<18}{book[0]:<9}{book[3]:<15}{book[4]:<10}")
+     else:
+          print('genre not found')
+     db.close()
+
      
 
 
@@ -51,4 +54,20 @@ if 'insert' in stuff:
 
 
 
-db.close()
+
+
+def insert_book_details():
+     inst_book = input('Book title: ')
+     sql = "SELECT * FROM genre;"
+     cursor.execute(sql,)
+     result = cursor.fetchall()
+
+     
+
+
+
+
+
+
+print_book_genre()
+
