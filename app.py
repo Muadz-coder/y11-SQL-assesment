@@ -147,33 +147,41 @@ def insert_book_details():
 
 # FINISHED WITH THE QUESTIONS.
 
-while True:
-     user_input = input("What would you like to do?\n(1) Insert book details into the data\n(2) Check the details on a specific book by the name\n(3) Check the details on a specific book by its book ID\n(4) Print all the books sorted by a specific genre\n(5) Print all the books that were made by a specific author\n(6) Print all the books sorted by the year they were published\n(7) Exit\nEnter the number: ")
-  
+
+user_input = int(input("What would you like to do?\n(1) Insert book details into the data\n(2) Check the details on a specific book by the name\n(3) Check the details on a specific book by its book ID\n(4) Print all the books sorted by a specific genre\n(5) Print all the books that were made by a specific author\n(6) Print all the books sorted by the year they were published\n(7) Exit\nEnter the number: "))
      #Insert book details into the data
+
+while True:
+     #Insert book details into the data   
      if user_input == 1:
           insert_book_details()
+     
      #Check the details on a specific book by the name
      elif user_input == 2:
           check_book_details()
+     
      #Check the details on a specific book by its book ID
      elif user_input == 3:
           check_book_id()
-    #Print all the books sorted by a specific genre
+     
+     #Print all the books sorted by a specific genre
      elif user_input == 4:
           print_book_genre()
+     
      # Print all the books that were made by a specific author
      elif user_input == 5:
           print_book_author()
-    #Print all the books sorted by the year they were published
+     
+     # Print all the books sorted by the year they were published
      elif user_input == 6:
           print_allbook_year()
      
+     #Break the code loop
      elif user_input == 7:
           break
      
      else:
-        print('Invalid input')
+          print('Invalid input')
 
   
 
